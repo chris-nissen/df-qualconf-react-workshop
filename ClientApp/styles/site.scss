@@ -1,3 +1,6 @@
+@import 'variable-overrides';
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
 .main-nav li .glyphicon {
     margin-right: 10px;
 }
@@ -6,7 +9,7 @@
 .main-nav li a.active,
 .main-nav li a.active:hover,
 .main-nav li a.active:focus {
-    background-color: #4189C7;
+    background-color: $brand-primary;
     color: white;
 }
 

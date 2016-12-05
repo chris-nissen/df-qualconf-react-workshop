@@ -16,7 +16,6 @@ var sharedConfig = {
     entry: {
         vendor: [
             'bootstrap',
-            'bootstrap/dist/css/bootstrap.css',
             'domain-task',
             'event-source-polyfill',
             'react',
@@ -48,7 +47,12 @@ var clientBundleConfig = merge(sharedConfig, {
     output: { path: path.join(__dirname, 'wwwroot', 'dist') },
     module: {
         loaders: [
-            { test: /\.css(\?|$)/, loader: extractCSS.extract(['css-loader']) }
+            { test: /\.css(\?|$)/, loader: extractCSS.extract(['css-loader']) },
+						{ test: /\.scss$/, loader: extractCss.extract('style-loader', 'css-loader!sass-loader') },
+									 {
+									 	test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+									 	loader: "file"
+									 }
         ]
     },
     plugins: [
