@@ -1,5 +1,7 @@
 @import 'variable-overrides';
+@import 'bootswatch-variables';
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'bootswatch-overrides';
 
 .main-nav li .glyphicon {
     margin-right: 10px;

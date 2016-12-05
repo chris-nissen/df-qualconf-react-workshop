@@ -19,6 +19,7 @@ var sharedConfig = {
             'domain-task',
             'event-source-polyfill',
             'react',
+						'react-bootstrap',
             'react-dom',
             'react-router',
             'react-redux',
