@@ -4,16 +4,21 @@ import { Layout } from './components/Layout';
 import Home from './components/Home';
 import FetchData from './components/FetchData';
 import Counter from './components/Counter';
+import Schedule from 'components/Schedule';
 
 export default <Route component={ Layout }>
-    <Route path='/' components={{ body: Home }} />
-    <Route path='/counter' components={{ body: Counter }} />
-    <Route path='/fetchdata' components={{ body: FetchData }}>
-        <Route path='(:startDateIndex)' /> { /* Optional route segment that does not affect NavMenu highlighting */ }
-    </Route>
-</Route>;
+	               <Route path='/' components={{ body: Home }}/>
+	               <Route path='/counter' components={{ body: Counter }}/>
+	               <Route path='/fetchdata' components={{ body: FetchData }}>
+		               <Route path='(:startDateIndex)'/> {
+/* Optional route segment that does not affect NavMenu highlighting */
+ }
+	               </Route>
+	               <Route path='/schedule' components={{ body: Schedule }}/>
+	               <Route path='/game' components={{ body: GameRatings }}/>
+               </Route>;
 
 // Enable Hot Module Replacement (HMR)
 if (module.hot) {
-    module.hot.accept();
+	module.hot.accept();
 }
