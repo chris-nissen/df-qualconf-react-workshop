@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Game } from 'models';
-import { TeamBadge } from 'components';
+import TeamBadge from './TeamBadge';
 
 interface GameProps {
 	game: Game;

@@ -4,7 +4,8 @@ import { Layout } from './components/Layout';
 import Home from './components/Home';
 import FetchData from './components/FetchData';
 import Counter from './components/Counter';
-import Schedule from 'components/Schedule';
+import Schedule from './components/Schedule';
+import GameRatings from './components/GameRatings';
 
 export default <Route component={ Layout }>
 	               <Route path='/' components={{ body: Home }}/>
@@ -15,7 +16,7 @@ export default <Route component={ Layout }>
  }
 	               </Route>
 	               <Route path='/schedule' components={{ body: Schedule }}/>
-	               <Route path='/game' components={{ body: GameRatings }}/>
+								<Route path='/game' components={{ body: GameRatings }}/>
                </Route>;
 
 // Enable Hot Module Replacement (HMR)

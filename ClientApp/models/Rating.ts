@@ -1,6 +1,6 @@
 ﻿import { Player } from 'models';
 
 export class Rating {
-	player: Player;
+	playerId: number;
 	rating: number;
 }

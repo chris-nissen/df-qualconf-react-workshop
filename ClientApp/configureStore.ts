@@ -28,6 +28,6 @@ export default function configureStore(initialState?: Store.ApplicationState) {
     return store;
 }
 
-function buildRootReducer(allReducers) {
+function buildRootReducer(allReducers: any) {
     return combineReducers<Store.ApplicationState>(Object.assign({}, allReducers, { routing: routerReducer }));
 }
