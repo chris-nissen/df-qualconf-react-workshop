@@ -5,26 +5,25 @@ export function fetchHardCodedSchedule(): Game[] {
 	return [
 		{
 			id: 1,
-			date: moment('2016-12-17').toDate(),
+			date: moment('2016-12-17 20:00').toDate(),
 			awayTeam: getTeam('Lightning'),
 			homeTeam: getTeam('Oilers'),
 			ratings: []
 		},
 		{
 			id: 2,
-			date: moment('2016-12-19').toDate(),
+			date: moment('2016-12-19 18:00').toDate(),
 			awayTeam: getTeam('Oilers'),
 			homeTeam: getTeam('Blues'),
 			ratings: []
+		},
+		{
+			id: 3,
+			date: moment('2016-12-21 19:30').toDate(),
+			awayTeam: getTeam('Oilers'),
+			homeTeam: getTeam('Coyotes'),
+			ratings: []
 		}
-		//,
-		//{
-		//	id: 3,
-		//	date: moment('2016-12-21').toDate(),
-		//	awayTeam: getTeam('Oilers'),
-		//	homeTeam: getTeam('Coyotes'),
-		//	ratings: []
-		//}
 	]
 }
 
@@ -38,7 +37,7 @@ function getTeam(name: string): Team {
 		},
 		{
 			id: 2,
-			name: "Lightning",
+			name: "Tampa Bay Lightning",
 			players: [
 			]
 		},

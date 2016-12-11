@@ -4,6 +4,17 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractCSS = new ExtractTextPlugin('site.css');
 var merge = require('webpack-merge');
+var fs = require('fs');
+
+function DummyFilePlugin(options) {
+	this.files = options.files || [];
+}
+
+DummyFilePlugin.prototype.apply = function(compiler) {
+	this.files.map(function(fileName) {
+		fs.writeFile(fileName, '');
+	});
+};
 
 // Configuration in common to both client-side and server-side bundles
 var sharedConfig = () => ({
@@ -55,7 +66,11 @@ var clientBundleConfig = merge(sharedConfig(),
 				moduleFilenameTemplate: path
 					.relative(clientBundleOutputDir, '[resourcePath]')
 // Point sourcemap entries to the original file locations on disk
-			})
+			}),
+			new DummyFilePlugin({
+				files: ['./wwwroot/dist/site.css'] // this prevents a bunch of 404s when we are injecting our styles in dev.
+			}),
+			new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' })
 		]
 		: [
 			// Plugins that apply in production builds only

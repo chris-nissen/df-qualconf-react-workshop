@@ -6,6 +6,7 @@ import { ApplicationState } from '../store';
 import * as ScheduleStore from '../store/Schedule';
 import GameBadge from './GameBadge';
 import { Game } from 'models';
+import { Row, Col } from 'react-bootstrap';
 
 type ScheduleProps = ScheduleStore.ScheduleState & typeof ScheduleStore.actionCreators;
 
@@ -13,7 +14,11 @@ class Schedule extends React.Component<ScheduleProps, void> {
 	public render() {
 		return <div>
 			<h1>Oilers Upcoming Schedule</h1>
-			{this.props.games.map(game => <GameBadge key={game.id} game={game} navigateToGame={this.navigateToGame.bind(this)} />)}
+			<Row>
+				<Col xs={6}>
+					{this.props.games.map(game => <GameBadge key={game.id} game={game} navigateToGame={this.navigateToGame.bind(this)} />)}
+					</Col>
+				</Row>
 		</div>;
 	}
 
