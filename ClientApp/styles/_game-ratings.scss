@@ -1,0 +1,29 @@
+/// <reference path="./_variable_overrides.scss" />
+/// <reference path="../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss" />
+
+.game-ratings {
+
+	.header {
+		$logo-size: 150px;
+
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+
+		img {
+			height: $logo-size;
+			width: $logo-size;
+			margin: 30px;
+		}
+
+		.matchup {
+			font-size: $font-size-h1;
+			line-height: 0.8;
+		}
+
+		.date-and-time {
+			font-style: italic;
+			font-size: $font-size-h4;
+		}
+	}
+}

@@ -58,3 +58,8 @@ function getTeam(name: string): Team {
 	return teams.filter(t => t.name.indexOf(name) !== -1)[0];
 }
 
+export function fetchHardCodedGame(gameId: number) {
+	var games = fetchHardCodedSchedule();
+	return games.filter(g => g.id === gameId)[0];
+}
+

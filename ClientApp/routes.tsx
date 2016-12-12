@@ -16,7 +16,7 @@ export default <Route component={ Layout }>
  }
 	               </Route>
 	               <Route path='/schedule' components={{ body: Schedule }}/>
-								<Route path='/game' components={{ body: GameRatings }}/>
+								<Route path='/game/:id' components={{ body: GameRatings }}/>
                </Route>;
 
 // Enable Hot Module Replacement (HMR)

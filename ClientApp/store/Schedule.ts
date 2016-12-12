@@ -3,9 +3,6 @@ import { AppThunkAction } from './';
 import { Game } from 'models';
 import { fetchHardCodedSchedule } from '../hardCodedData';
 
-//const navigateActionType = 'NAVIGATE_TO_GAME';
-//const fetchedScheduleActionType = ;
-
 // -----------------
 // STATE - This defines the type of data maintained in the Redux store.
 
@@ -18,10 +15,6 @@ export interface ScheduleState {
 // They do not themselves have any side-effects; they just describe something that is going to happen.
 // Use @typeName and isActionType for type detection that works even after serialization/deserialization.
 
-interface NavigateAction {
-	type: 'NAVIGATE_TO_GAME';
-}
-
 interface FetchedScheduleAction {
 	type: 'FETCHED_SCHEDULE';
 	schedule: Game[];
@@ -29,7 +22,7 @@ interface FetchedScheduleAction {
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = NavigateAction | FetchedScheduleAction;
+type KnownAction = FetchedScheduleAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.

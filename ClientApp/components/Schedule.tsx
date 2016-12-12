@@ -12,7 +12,7 @@ type ScheduleProps = ScheduleStore.ScheduleState & typeof ScheduleStore.actionCr
 
 class Schedule extends React.Component<ScheduleProps, void> {
 	public render() {
-		return <div>
+		return <div className="schedule">
 			<h1>Oilers Upcoming Schedule</h1>
 			<Row>
 				<Col xs={6}>
@@ -23,7 +23,7 @@ class Schedule extends React.Component<ScheduleProps, void> {
 	}
 
 	navigateToGame(game: Game) {
-		browserHistory.push('/game?id=' + game.id);
+		browserHistory.push('/game/' + game.id);
 	}
 
 	componentWillMount(): void {

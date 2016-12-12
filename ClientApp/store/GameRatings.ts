@@ -1,5 +1,7 @@
 import { Action, Reducer, ThunkAction } from 'redux';
+import { AppThunkAction } from './';
 import { Game } from 'models';
+import { fetchHardCodedGame } from '../hardCodedData';
 
 // -----------------
 // STATE - This defines the type of data maintained in the Redux store.
@@ -13,19 +15,28 @@ export interface GameRatingsState {
 // They do not themselves have any side-effects; they just describe something that is going to happen.
 // Use @typeName and isActionType for type detection that works even after serialization/deserialization.
 
-interface NavigateAction {
-	type: string;
+interface BackToScheduleAction {
+	type: 'BACK_TO_SCHEDULE';
+}
+
+interface FetchedGameAction {
+	type: 'FETCHED_GAME';
+	game: Game;
 }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = NavigateAction;
+type KnownAction = BackToScheduleAction | FetchedGameAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
 // They don't directly mutate state, but they can have external side-effects (such as loading data).
 
 export const actionCreators = {
+	fetchGame: (gameId: number): AppThunkAction<FetchedGameAction> => (dispatch, getState) => {
+		const game = fetchHardCodedGame(gameId);
+		dispatch({ type: 'FETCHED_GAME', game: game });
+	}
 };
 
 // ----------------
@@ -35,7 +46,11 @@ const initialState: GameRatingsState = {
 }
 
 export const reducer: Reducer<GameRatingsState> = (state: GameRatingsState, action: KnownAction) => {
-	switch (action.type) {
+	switch (action.type) {		
+		case 'FETCHED_GAME':
+			return {
+				game: action.game
+			};
 	}
 
 	// For unrecognized actions (or in cases where actions have no effect), must return the existing state
