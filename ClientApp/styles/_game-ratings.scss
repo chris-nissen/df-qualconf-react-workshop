@@ -33,6 +33,9 @@
 			display: flex;
 			align-items: center;
 			margin-bottom: 30px;
+			transition-property: all;
+			transition-duration: 500ms;
+			transition-timing-function: ease-in-out;
 
 			button {
 				margin: 10px;

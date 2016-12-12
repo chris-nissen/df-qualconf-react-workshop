@@ -5,3 +5,7 @@ $oilers-primary: #013E7F;
 $oilers-secondary: #EB6E1E;
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
+
+$navbar-inverse-bg:                         $oilers-primary !default;
+$navbar-inverse-border:                     $oilers-primary !default;
+$navbar-inverse-link-color:                 white !default;
