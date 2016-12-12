@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Game } from 'models';
-import TeamLogo from './TeamLogo';
+import { TeamLogo } from 'components';
 import moment from 'moment';
 
 interface GameProps {
@@ -8,7 +8,7 @@ interface GameProps {
 	navigateToGame: (game: Game) => void;
 }
 
-export default class GameBadge extends React.Component<GameProps, void> {
+export class GameBadge extends React.Component<GameProps, void> {
 	render() {
 		return <div className="game-badge" onClick={() => this.props.navigateToGame(this.props.game)}>
 			       <TeamLogo team={this.props.game.awayTeam}/>

@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { ApplicationState } from '../store';
 import * as GameRatingsStore from '../store/GameRatings';
-import TeamLogo from './TeamLogo';
+import { Roster, TeamLogo } from 'components';
 import moment from 'moment';
+import { Row, Col } from 'react-bootstrap';
 
 type GameRatingsProps = GameRatingsStore.GameRatingsState
 	& typeof GameRatingsStore.actionCreators
@@ -16,18 +17,26 @@ class GameRatings extends React.Component<GameRatingsProps, void> {
 		if (!this.props.game) return null;
 
 		return <div className="game-ratings">
-			      <div className="header">
-				<TeamLogo team={this.props.game.awayTeam}/>
-				<div>
-				<div className="matchup">
-			{this.props.game.awayTeam.name + ' at ' + this.props.game.homeTeam.name}
-					</div>
-					<div className="date-and-time">
-						{moment(this.props.game.date).format('MMMM D, h:mm a')}
-						</div>
-					</div>
-				<TeamLogo team={this.props.game.homeTeam}/>
-				</div>
+			       <div className="header">
+				       <TeamLogo team={this.props.game.awayTeam}/>
+				       <div>
+					       <div className="matchup">
+						       {this.props.game.awayTeam.name + ' at ' + this.props.game.homeTeam.name}
+					       </div>
+					       <div className="date-and-time">
+						       {moment(this.props.game.date).format('MMMM D, h:mm a')}
+					       </div>
+				       </div>
+				       <TeamLogo team={this.props.game.homeTeam}/>
+			       </div>
+			       <Row>
+				       <Col xs={6}>
+					       <Roster team={this.props.game.awayTeam}/>
+				       </Col>
+				       <Col xs={6}>
+					       <Roster team={this.props.game.homeTeam}/>
+				       </Col>
+			       </Row>
 		       </div>;
 	}
 

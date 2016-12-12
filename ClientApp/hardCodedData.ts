@@ -24,7 +24,7 @@ export function fetchHardCodedSchedule(): Game[] {
 			homeTeam: getTeam('Coyotes'),
 			ratings: []
 		}
-	]
+	];
 }
 
 function getTeam(name: string): Team {
@@ -33,6 +33,56 @@ function getTeam(name: string): Team {
 			id: 1,
 			name: "Edmonton Oilers",
 			players: [
+				{
+					id: 1,
+					name: "Connor McDavid",
+					number: 97
+				},
+				{
+					id: 2,
+					name: "Leon Draisaitl",
+					number: 29
+				},
+				{
+					id: 3,
+					name: "Jordan Eberle",
+					number: 14
+				},
+				{
+					id: 4,
+					name: "Milan Lucic",
+					number: 27
+				},
+				{
+					id: 5,
+					name: "Ryan Nugent-Hopkins",
+					number: 93
+				},
+				{
+					id: 6,
+					name: "Oscar Klefbom",
+					number: 77
+				},
+				{
+					id: 7,
+					name: "Andrej Sekera",
+					number: 2
+				},
+				{
+					id: 8,
+					name: "Cam Talbot",
+					number: 33
+				},
+				{
+					id: 9,
+					name: "Adam Larsson",
+					number: 6
+				},
+				{
+					id: 10,
+					name: "Patrick Maroon",
+					number: 19
+				},
 			]
 		},
 		{
@@ -59,7 +109,6 @@ function getTeam(name: string): Team {
 }
 
 export function fetchHardCodedGame(gameId: number) {
-	var games = fetchHardCodedSchedule();
+	const games = fetchHardCodedSchedule();
 	return games.filter(g => g.id === gameId)[0];
 }
-

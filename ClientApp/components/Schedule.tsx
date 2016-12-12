@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { ApplicationState } from '../store';
+import { ApplicationState } from 'store';
 import * as ScheduleStore from '../store/Schedule';
-import GameBadge from './GameBadge';
+import { GameBadge } from 'components';
 import { Game } from 'models';
 import { Row, Col } from 'react-bootstrap';
 

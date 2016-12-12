@@ -2,6 +2,7 @@ import * as WeatherForecasts from './WeatherForecasts';
 import * as Counter from './Counter';
 import * as Schedule from './Schedule';
 import * as GameRatings from './GameRatings';
+export { WeatherForecasts, Counter, Schedule, GameRatings };
 
 // The top-level state object
 export interface ApplicationState {

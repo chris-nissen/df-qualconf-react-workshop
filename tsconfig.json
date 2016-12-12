@@ -16,8 +16,10 @@
 				"ClientApp/*",
 				"node_modules/*"
 			],
+
 			// Fixes "Duplicate identifier 'Redux'" error when packages were installed via Yarn (by specifying which .d.ts file is authoritative)
 			"redux": [ "./node_modules/@types/redux/index" ],
+
 			"typeRoots": [ "./node_modules/@types" ]
 		}
 	},

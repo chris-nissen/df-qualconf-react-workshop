@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Router, Route, HistoryBase } from 'react-router';
-import { Layout } from './components/Layout';
-import Home from './components/Home';
-import FetchData from './components/FetchData';
-import Counter from './components/Counter';
-import Schedule from './components/Schedule';
-import GameRatings from './components/GameRatings';
+import { Layout, Home, FetchData, Counter, Schedule, GameRatings } from 'components';
 
 export default <Route component={ Layout }>
 	               <Route path='/' components={{ body: Home }}/>

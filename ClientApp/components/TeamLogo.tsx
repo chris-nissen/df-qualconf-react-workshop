@@ -5,7 +5,7 @@ interface TeamLogoProps {
 	team: Team;
 }
 
-export default class TeamLogo extends React.Component<TeamLogoProps, void> {
+export class TeamLogo extends React.Component<TeamLogoProps, void> {
 	render() {
 		const logoUrl = require(`../images/team-logos/${this.props.team.name}.png`) as string;
 
