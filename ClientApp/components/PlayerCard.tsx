@@ -13,6 +13,9 @@ interface PlayerCardProps {
 export class PlayerCard extends React.Component<PlayerCardProps, void> {
 	public render() {
 		return <div className="player-card">
+						       <div className="player-rating">
+				       {this.props.rating.rating}
+			       </div>
 			       <Button bsStyle="success" onClick={() => this.props.upVote(this.props.rating)}>
 				       <Glyphicon glyph="thumbs-up"/>
 			       </Button>
@@ -29,9 +32,6 @@ export class PlayerCard extends React.Component<PlayerCardProps, void> {
 						       #{this.props.player.number}
 					       </div>
 				       </div>
-			       </div>
-			       <div className="player-rating">
-				       {this.props.rating.rating}
 			       </div>
 		       </div>;
 	}

@@ -66,8 +66,11 @@
 
 			.player-rating {
 				font-size: $font-size-h1;
+				font-family: "Roboto";
+				font-weight: bold;
 				text-align: right;
 				width: 100px;
+				margin-right: 20px;
 			}
 		}
 	}

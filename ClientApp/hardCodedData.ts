@@ -86,18 +86,167 @@ function getTeam(name: string): Team {
 			id: 2,
 			name: "Tampa Bay Lightning",
 			players: [
+				{
+					id: 11,
+					name: "Nikita Kucherov",
+					number: 86
+				},
+				{
+					id: 12,
+					name: "Steven Stamkos",
+					number: 91
+				},
+				{
+					id: 13,
+					name: "Victor Hedman",
+					number: 77
+				},
+				{
+					id: 14,
+					name: "Valtteri Filppula",
+					number: 51
+				},
+				{
+					id: 15,
+					name: "Jonathan Drouin",
+					number: 27
+				},
+				{
+					id: 16,
+					name: "Ondrej Palat",
+					number: 18
+				},
+				{
+					id: 17,
+					name: "Alex Killorn",
+					number: 17
+				},
+				{
+					id: 18,
+					name: "Anton Stralman",
+					number: 6
+				},
+				{
+					id: 19,
+					name: "Tyler Johnson",
+					number: 9
+				},
+				{
+					id: 20,
+					name: "Ben Bishop",
+					number: 30
+				},
 			]
 		},
 		{
 			id: 3,
 			name: "St. Louis Blues",
-			players: [
+			players: [				
+			{
+					id: 21,
+					name: "Vladimir Tarasenko",
+					number: 91
+				},
+				{
+					id: 22,
+					name: "Kevin Shattenkirk",
+					number: 22
+				},
+				{
+					id: 23,
+					name: "Jaden Schwartz",
+					number: 17
+				},
+				{
+					id: 24,
+					name: "Robby Fabbri",
+					number: 15
+				},
+				{
+					id: 25,
+					name: "Alexander Steen",
+					number: 20
+				},
+				{
+					id: 26,
+					name: "Paul Stastny",
+					number: 26
+				},
+				{
+					id: 27,
+					name: "Alex Pietrangelo",
+					number: 27
+				},
+				{
+					id: 28,
+					name: "Colton Parayko",
+					number: 55
+				},
+				{
+					id: 29,
+					name: "David Perron",
+					number: 57
+				},
+				{
+					id: 30,
+					name: "Jake Allen",
+					number: 34
+				},
 			]
 		},
 		{
 			id: 4,
 			name: "Arizona Coyotes",
-			players: [
+			players: [	{
+					id: 31,
+					name: "Radim Vrbata",
+					number: 17
+				},
+				{
+					id: 32,
+					name: "Max Domi",
+					number: 16
+				},
+				{
+					id: 33,
+					name: "Oliver Ekman-Larsson",
+					number: 23
+				},
+				{
+					id: 34,
+					name: "Jordan Martinook",
+					number: 48
+				},
+				{
+					id: 35,
+					name: "Alex Goligoski",
+					number: 33
+				},
+				{
+					id: 36,
+					name: "Tobias Rieder",
+					number: 8
+				},
+				{
+					id: 37,
+					name: "Martin Hanzal",
+					number: 11
+				},
+				{
+					id: 38,
+					name: "Lawson Crouse",
+					number: 67
+				},
+				{
+					id: 39,
+					name: "Christian Dvorak",
+					number: 18
+				},
+				{
+					id: 40,
+					name: "Mike Smith",
+					number: 41
+				},
 			]
 		}
 	];
