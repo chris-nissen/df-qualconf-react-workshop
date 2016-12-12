@@ -1,6 +1,7 @@
 import { Action, Reducer, ThunkAction } from 'redux';
 import { AppThunkAction } from './';
-import { Game, Rating } from 'models';
+import _ from 'lodash';
+import { Game, Rating, Player } from 'models';
 import { fetchHardCodedGame } from '../hardCodedData';
 
 // -----------------
@@ -8,7 +9,7 @@ import { fetchHardCodedGame } from '../hardCodedData';
 
 export interface GameRatingsState {
 	game: Game;
-	ratings: Rating[]
+	ratings: Rating[];
 }
 
 // -----------------
@@ -23,12 +24,22 @@ interface BackToScheduleAction {
 interface FetchedGameAction {
 	type: 'FETCHED_GAME';
 	game: Game;
-	newRatings: Rating[]
+	newRatings: Rating[];
+}
+
+interface UpVoteAction {
+	type: 'UPVOTE';
+	rating: Rating;
+}
+
+interface DownVoteAction {
+	type: 'DOWNVOTE';
+	rating: Rating;
 }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = BackToScheduleAction | FetchedGameAction;
+type KnownAction = BackToScheduleAction | FetchedGameAction | UpVoteAction | DownVoteAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
@@ -51,7 +62,10 @@ export const actionCreators = {
 		});
 
 		dispatch({ type: 'FETCHED_GAME', game: game, newRatings: newRatings });
-	}
+	},
+
+	upVote: (rating: Rating) => ({ type: 'UPVOTE', rating: rating } as UpVoteAction),
+	downVote: (rating: Rating) => ({ type: 'DOWNVOTE', rating: rating } as DownVoteAction),
 };
 
 // ----------------
@@ -59,18 +73,52 @@ export const actionCreators = {
 const initialState: GameRatingsState = {
 	game: null,
 	ratings: []
-}
-
+};
 export const reducer: Reducer<GameRatingsState> = (state: GameRatingsState, action: KnownAction) => {
-	switch (action.type) {		
-		case 'FETCHED_GAME':
-			return Object.assign({}, state, {
+	switch (action.type) {
+	case 'FETCHED_GAME':
+		return Object.assign({},
+			state,
+			{
 				game: action.game,
 				ratings: state.ratings.concat(action.newRatings)
 			});
+
+	case 'UPVOTE':
+	{
+		const newRatings = adjustRating(state.ratings, action.rating, 1);
+
+		return Object.assign({},
+			state,
+			{
+				ratings: newRatings
+			});
+	}
+
+	case 'DOWNVOTE':
+	{
+		const newRatings = adjustRating(state.ratings, action.rating, -1);
+
+		return Object.assign({},
+			state,
+			{
+				ratings: newRatings
+			});
+	}
 	}
 
 	// For unrecognized actions (or in cases where actions have no effect), must return the existing state
 	//  (or default initial state if none was supplied)
 	return state || initialState;
 };
+
+function adjustRating(ratings: Rating[], rating: Rating, adjustment: number): Rating[] {
+	const ratingToAdjust = _.remove(ratings, r => r.gameId === rating.gameId && r.playerId === rating.playerId)[0];
+	const newRating: Rating = {
+		gameId: ratingToAdjust.gameId,
+		playerId: ratingToAdjust.playerId,
+		rating: ratingToAdjust.rating + adjustment
+	};
+
+	return ratings.concat(newRating);
+}

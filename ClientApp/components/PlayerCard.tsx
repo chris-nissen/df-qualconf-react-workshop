@@ -6,16 +6,18 @@ import { PlayerPicture } from 'components';
 interface PlayerCardProps {
 	player: Player;
 	rating: Rating;
+	upVote: (rating: Rating) => void;
+	downVote: (rating: Rating) => void;
 }
 
 export class PlayerCard extends React.Component<PlayerCardProps, void> {
 	public render() {
 		return <div className="player-card">
-			       <Button bsStyle="success">
+			       <Button bsStyle="success" onClick={() => this.props.upVote(this.props.rating)}>
 				       <Glyphicon glyph="thumbs-up"/>
 			       </Button>
 			       <Button bsStyle="danger">
-				       <Glyphicon glyph="thumbs-down"/>
+				       <Glyphicon glyph="thumbs-down" onClick={() => this.props.downVote(this.props.rating)}/>
 			       </Button>
 			       <div className="player-details">
 				       <PlayerPicture player={this.props.player}/>

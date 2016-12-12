@@ -1,20 +1,31 @@
 import * as React from 'react';
-import { Team, Rating } from 'models';
+import { Team, Rating, Player } from 'models';
 import { Row, Col } from 'react-bootstrap';
 import { PlayerCard } from 'components';
 
 interface RosterProps {
 	team: Team;
-	ratings: Rating[]
+	ratings: Rating[],
+	upVote: (rating: Rating) => void;
+	downVote: (rating: Rating) => void;
 }
 
 export class Roster extends React.Component<RosterProps, void> {
 	public render() {
+		const playersWithRatings = this.props.team.players.map(p => {
+			const playerRating = this.props.ratings.filter(r => r.playerId === p.id)[0];
+			return {
+				player: p,
+				rating: playerRating
+			};
+		});
+
+		const sortedList = playersWithRatings.sort((pwr1, pwr2) => pwr2.rating.rating - pwr1.rating.rating);
+
 		return <div className="roster">
-			{this.props.team.players.map(p => {
-					const playerRating = this.props.ratings.filter(r => r.playerId === p.id)[0];
-					return <PlayerCard key={p.id} player={p} rating={playerRating}/>;
-})}
-		</div>;
+			       {sortedList.map(pwr => 
+				<PlayerCard key={pwr.player.id} player={pwr.player} rating={pwr.rating} 
+						upVote={this.props.upVote} downVote={this.props.downVote}/>)}
+		       </div>;
 	}
 }
