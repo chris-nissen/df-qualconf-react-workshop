@@ -7,22 +7,19 @@ export function fetchHardCodedSchedule(): Game[] {
 			id: 1,
 			date: moment('2016-12-17 20:00').toDate(),
 			awayTeam: getTeam('Lightning'),
-			homeTeam: getTeam('Oilers'),
-			ratings: []
+			homeTeam: getTeam('Oilers')
 		},
 		{
 			id: 2,
 			date: moment('2016-12-19 18:00').toDate(),
 			awayTeam: getTeam('Oilers'),
-			homeTeam: getTeam('Blues'),
-			ratings: []
+			homeTeam: getTeam('Blues')
 		},
 		{
 			id: 3,
 			date: moment('2016-12-21 19:30').toDate(),
 			awayTeam: getTeam('Oilers'),
-			homeTeam: getTeam('Coyotes'),
-			ratings: []
+			homeTeam: getTeam('Coyotes')
 		}
 	];
 }

@@ -1,6 +1,6 @@
 import { Action, Reducer, ThunkAction } from 'redux';
 import { AppThunkAction } from './';
-import { Game } from 'models';
+import { Game, Rating } from 'models';
 import { fetchHardCodedGame } from '../hardCodedData';
 
 // -----------------
@@ -8,6 +8,7 @@ import { fetchHardCodedGame } from '../hardCodedData';
 
 export interface GameRatingsState {
 	game: Game;
+	ratings: Rating[]
 }
 
 // -----------------
@@ -22,6 +23,7 @@ interface BackToScheduleAction {
 interface FetchedGameAction {
 	type: 'FETCHED_GAME';
 	game: Game;
+	newRatings: Rating[]
 }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
@@ -35,22 +37,37 @@ type KnownAction = BackToScheduleAction | FetchedGameAction;
 export const actionCreators = {
 	fetchGame: (gameId: number): AppThunkAction<FetchedGameAction> => (dispatch, getState) => {
 		const game = fetchHardCodedGame(gameId);
-		dispatch({ type: 'FETCHED_GAME', game: game });
+
+		const existingRatingsForGame = getState().gameRatings.ratings.filter(r => r.gameId === gameId);
+		const playersInGame = game.awayTeam.players.concat(game.homeTeam.players);
+		const playersWithoutExistingRatingForGame =
+			playersInGame.filter(p => existingRatingsForGame.filter(r => r.playerId === p.id).length === 0);
+		const newRatings: Rating[] = playersWithoutExistingRatingForGame.map(p => {
+			return {
+				gameId: gameId,
+				playerId: p.id,
+				rating: 0
+			};
+		});
+
+		dispatch({ type: 'FETCHED_GAME', game: game, newRatings: newRatings });
 	}
 };
 
 // ----------------
 // REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
 const initialState: GameRatingsState = {
-	game: null
+	game: null,
+	ratings: []
 }
 
 export const reducer: Reducer<GameRatingsState> = (state: GameRatingsState, action: KnownAction) => {
 	switch (action.type) {		
 		case 'FETCHED_GAME':
-			return {
-				game: action.game
-			};
+			return Object.assign({}, state, {
+				game: action.game,
+				ratings: state.ratings.concat(action.newRatings)
+			});
 	}
 
 	// For unrecognized actions (or in cases where actions have no effect), must return the existing state

@@ -6,6 +6,7 @@ import Schedule from './Schedule';
 import GameRatings from './GameRatings';
 export { Home, FetchData, Counter, Schedule, GameRatings };
 export { TeamLogo } from './TeamLogo';
+export { PlayerPicture } from './PlayerPicture';
 export { GameBadge } from './GameBadge';
 export { Roster } from './Roster';
 export { PlayerCard } from './PlayerCard';

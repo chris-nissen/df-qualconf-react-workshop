@@ -1,5 +1,5 @@
 /// <reference path="./_variable_overrides.scss" />
-/// <reference path="../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss" />
+/// <reference path="../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss" />
 
 .schedule {
 	.game-badge {
@@ -17,17 +17,18 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			font-size: $font-size-h3;
 		}
 
-		img {
+		.team-logo {
 			height: $logo-size;
 			width: $logo-size;
 			margin: 20px;
 		}
 
 		.date-and-time {
-			font-style: italic;
-			font-size: smaller;
+			font-family: "Roboto";
+			font-size: $font-size-h5;
 		}
 	}
 }

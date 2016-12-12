@@ -44,9 +44,9 @@ const initialState: ScheduleState = {
 export const reducer: Reducer<ScheduleState> = (state: ScheduleState, action: KnownAction) => {
 	switch (action.type) {
 		case 'FETCHED_SCHEDULE':
-			return {
+			return Object.assign({}, state, {
 				games: action.schedule
-			};
+			});
 	}
 
 	// For unrecognized actions (or in cases where actions have no effect), must return the existing state

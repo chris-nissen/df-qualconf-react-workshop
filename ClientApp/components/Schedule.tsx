@@ -15,7 +15,7 @@ class Schedule extends React.Component<ScheduleProps, void> {
 		return <div className="schedule">
 			<h1>Oilers Upcoming Schedule</h1>
 			<Row>
-				<Col xs={6}>
+				<Col xs={8}>
 					{this.props.games.map(game => <GameBadge key={game.id} game={game} navigateToGame={this.navigateToGame.bind(this)} />)}
 					</Col>
 				</Row>

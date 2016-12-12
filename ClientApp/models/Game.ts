@@ -5,5 +5,4 @@ export class Game {
 	date: Date;
 	awayTeam: Team;
 	homeTeam: Team;
-	ratings: Rating[];
 }
