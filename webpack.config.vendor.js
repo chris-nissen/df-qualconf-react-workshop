@@ -49,7 +49,7 @@ var clientBundleConfig = merge(sharedConfig, {
     module: {
         loaders: [
             { test: /\.css(\?|$)/, loader: extractCSS.extract(['css-loader']) },
-						{ test: /\.scss$/, loader: extractCss.extract('style-loader', 'css-loader!sass-loader') },
+						{ test: /\.scss$/, loader: extractCSS.extract('style-loader', 'css-loader!sass-loader') },
 									 {
 									 	test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
 									 	loader: "file"
