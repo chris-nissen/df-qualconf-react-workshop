@@ -10,29 +10,27 @@ interface PlayerCardProps {
 	downVote: (rating: Rating) => void;
 }
 
-export class PlayerCard extends React.Component<PlayerCardProps, void> {
-	public render() {
-		return <div className="player-card">
-						       <div className="player-rating">
-				       {this.props.rating.rating}
-			       </div>
-			       <Button bsStyle="success" onClick={() => this.props.upVote(this.props.rating)}>
-				       <Glyphicon glyph="thumbs-up"/>
-			       </Button>
-			       <Button bsStyle="danger">
-				       <Glyphicon glyph="thumbs-down" onClick={() => this.props.downVote(this.props.rating)}/>
-			       </Button>
-			       <div className="player-details">
-				       <PlayerPicture player={this.props.player}/>
-				       <div>
-					       <div className="player-name">
-						       {this.props.player.name}
-					       </div>
-					       <div className="player-number">
-						       #{this.props.player.number}
-					       </div>
+export function PlayerCard(props: PlayerCardProps) {
+	return <div className="player-card">
+		       <div className="player-rating">
+			       {props.rating.rating}
+		       </div>
+		       <Button bsStyle="success" onClick={() => props.upVote(props.rating)}>
+			       <Glyphicon glyph="thumbs-up"/>
+		       </Button>
+		       <Button bsStyle="danger">
+			       <Glyphicon glyph="thumbs-down" onClick={() => props.downVote(props.rating)}/>
+		       </Button>
+		       <div className="player-details">
+			       <PlayerPicture player={props.player}/>
+			       <div>
+				       <div className="player-name">
+					       {props.player.name}
+				       </div>
+				       <div className="player-number">
+					       #{props.player.number}
 				       </div>
 			       </div>
-		       </div>;
-	}
+		       </div>
+	       </div>;
 }
