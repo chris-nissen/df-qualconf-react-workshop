@@ -6,8 +6,8 @@ import { PlayerPicture } from 'components';
 interface PlayerCardProps {
 	player: Player;
 	rating: Rating;
-	upVote: (rating: Rating) => void;
-	downVote: (rating: Rating) => void;
+	//upVote: (rating: Rating) => void;
+	//downVote: (rating: Rating) => void;
 }
 
 export function PlayerCard(props: PlayerCardProps) {
@@ -15,12 +15,12 @@ export function PlayerCard(props: PlayerCardProps) {
 		       <div className="player-rating">
 			       {props.rating.rating}
 		       </div>
-		       <Button bsStyle="success" onClick={() => props.upVote(props.rating)}>
+		       {/*<Button bsStyle="success" onClick={() => props.upVote(props.rating)}>
 			       <Glyphicon glyph="thumbs-up"/>
 		       </Button>
 		       <Button bsStyle="danger">
 			       <Glyphicon glyph="thumbs-down" onClick={() => props.downVote(props.rating)}/>
-		       </Button>
+		       </Button>*/}
 		       <div className="player-details">
 			       <PlayerPicture player={props.player}/>
 			       <div>

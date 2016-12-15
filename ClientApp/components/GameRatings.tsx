@@ -33,12 +33,14 @@ class GameRatings extends React.Component<GameRatingsProps, void> {
 			       </div>
 			       <Row>
 				       <Col xs={6}>
-					       <Roster team={this.props.game.awayTeam} ratings={ratingsForGame} 
-									upVote={this.props.upVote} downVote={this.props.downVote}/>
+					       {/*<Roster team={this.props.game.awayTeam} ratings={ratingsForGame} 
+									upVote={this.props.upVote} downVote={this.props.downVote}/>*/}
+								 <Roster team={this.props.game.awayTeam} ratings={ratingsForGame} />
 				       </Col>
 				       <Col xs={6}>
-					       <Roster team={this.props.game.homeTeam} ratings={ratingsForGame} 
-										upVote={this.props.upVote} downVote={this.props.downVote}/>
+					       {/*<Roster team={this.props.game.homeTeam} ratings={ratingsForGame} 
+										upVote={this.props.upVote} downVote={this.props.downVote}/>*/}
+								 <Roster team={this.props.game.homeTeam} ratings={ratingsForGame} />
 				       </Col>
 			       </Row>
 		       </div>;

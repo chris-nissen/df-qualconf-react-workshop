@@ -27,19 +27,20 @@ interface FetchedGameAction {
 	newRatings: Rating[];
 }
 
-interface UpVoteAction {
-	type: 'UPVOTE';
-	rating: Rating;
-}
+//interface UpVoteAction {
+//	type: 'UPVOTE';
+//	rating: Rating;
+//}
 
-interface DownVoteAction {
-	type: 'DOWNVOTE';
-	rating: Rating;
-}
+//interface DownVoteAction {
+//	type: 'DOWNVOTE';
+//	rating: Rating;
+//}
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = BackToScheduleAction | FetchedGameAction | UpVoteAction | DownVoteAction;
+//type KnownAction = BackToScheduleAction | FetchedGameAction | UpVoteAction | DownVoteAction;
+type KnownAction = BackToScheduleAction | FetchedGameAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
@@ -64,8 +65,8 @@ export const actionCreators = {
 		dispatch({ type: 'FETCHED_GAME', game: game, newRatings: newRatings });
 	},
 
-	upVote: (rating: Rating) => ({ type: 'UPVOTE', rating: rating } as UpVoteAction),
-	downVote: (rating: Rating) => ({ type: 'DOWNVOTE', rating: rating } as DownVoteAction),
+	//upVote: (rating: Rating) => ({ type: 'UPVOTE', rating: rating } as UpVoteAction),
+	//downVote: (rating: Rating) => ({ type: 'DOWNVOTE', rating: rating } as DownVoteAction),
 };
 
 // ----------------
@@ -84,27 +85,30 @@ export const reducer: Reducer<GameRatingsState> = (state: GameRatingsState, acti
 				ratings: state.ratings.concat(action.newRatings)
 			});
 
-	case 'UPVOTE':
-	{
-		const newRatings = adjustRating(state.ratings, action.rating, 1);
+	//case 'UPVOTE':
+	//{
+	//	const newRatings = adjustRating(state.ratings, action.rating, 1);
 
-		return Object.assign({},
-			state,
-			{
-				ratings: newRatings
-			});
-	}
+	//	//return Object.assign({},
+	//	//	state,
+	//	//	{
+	//	//		ratings: newRatings
+	//	//	});
+	//	return { ratings: newRatings, ...state };
+	//}
 
-	case 'DOWNVOTE':
-	{
-		const newRatings = adjustRating(state.ratings, action.rating, -1);
+	//case 'DOWNVOTE':
+	//{
+	//	const newRatings = adjustRating(state.ratings, action.rating, -1);
 
-		return Object.assign({},
-			state,
-			{
-				ratings: newRatings
-			});
-	}
+	//	//return Object.assign({},
+	//	//	state,
+	//	//	{
+	//	//		ratings: newRatings
+	//	//	});
+	//	return { ratings: newRatings, ...state };
+	//}
+
 	}
 
 	// For unrecognized actions (or in cases where actions have no effect), must return the existing state

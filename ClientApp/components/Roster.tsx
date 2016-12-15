@@ -6,26 +6,27 @@ import { PlayerCard } from 'components';
 interface RosterProps {
 	team: Team;
 	ratings: Rating[],
-	upVote: (rating: Rating) => void;
-	downVote: (rating: Rating) => void;
+	//upVote: (rating: Rating) => void;
+	//downVote: (rating: Rating) => void;
 }
 
 export class Roster extends React.Component<RosterProps, void> {
 	public render() {
 		const playersWithRatings = this.props.team.players.map(p => {
-			const playerRating = this.props.ratings.filter(r => r.playerId === p.id)[0];
 			return {
 				player: p,
-				rating: playerRating
+				rating: this.props.ratings.filter(r => r.playerId === p.id)[0]
 			};
 		});
 
-		const sortedList = playersWithRatings.sort((pwr1, pwr2) => pwr2.rating.rating - pwr1.rating.rating);
+		//const sortedList = playersWithRatings.sort((pwr1, pwr2) => pwr2.rating.rating - pwr1.rating.rating);
 
 		return <div className="roster">
-			       {sortedList.map(pwr => 
+			      {/* {sortedList.map(pwr => 
 				<PlayerCard key={pwr.player.id} player={pwr.player} rating={pwr.rating} 
-						upVote={this.props.upVote} downVote={this.props.downVote}/>)}
+						upVote={this.props.upVote} downVote={this.props.downVote}/>)}*/}
+						{playersWithRatings.map(pwr => 
+				<PlayerCard key={pwr.player.id} player={pwr.player} rating={pwr.rating}/>)}
 		       </div>;
 	}
 }
