@@ -33,7 +33,8 @@ interface DownVoteAction {
     rating: Rating;
 }
 
-// Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
+// Declare a 'discriminated union' type. 
+// This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
 type KnownAction = FetchedGameAction | UpVoteAction | DownVoteAction;
 
@@ -57,12 +58,17 @@ export const actionCreators = {
             };
         });
 
-        dispatch({ type: 'GameRatings::fetched game', game: game, newRatings: newRatings } as FetchedGameAction);
+        dispatch({
+            type: 'GameRatings::fetched game',
+            game: game,
+            newRatings: newRatings
+        } as FetchedGameAction);
     },
 };
 
 // ----------------
-// REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
+// REDUCER - For a given state and action, returns the new state. 
+// To support time travel, this must not mutate the old state.
 const initialState: GameRatingsState = {
     game: null,
     ratings: []
@@ -83,7 +89,8 @@ export const reducer: Reducer<GameRatingsState> = (state: GameRatingsState, acti
 };
 
 function adjustRating(ratings: Rating[], rating: Rating, adjustment: number): Rating[] {
-    const ratingToAdjust = _.remove(ratings, r => r.gameId === rating.gameId && r.playerId === rating.playerId)[0];
+    const ratingToAdjust = _.remove(ratings,
+        r => r.gameId === rating.gameId && r.playerId === rating.playerId)[0];
     const newRating: Rating = {
         ...ratingToAdjust,
         rating: ratingToAdjust.rating + adjustment

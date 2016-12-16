@@ -24,6 +24,8 @@ class Schedule extends React.Component<ScheduleProps, void> {
 
 // Wire up the React component to the Redux store
 export default connect(
-    (state: ApplicationState) => state.schedule, // Selects which state properties are merged into the component's props
-    ScheduleStore.actionCreators // Selects which action creators are merged into the component's props
+    // Selects which state properties are merged into the component's props
+    (state: ApplicationState) => state.schedule, 
+    // Selects which action creators are merged into the component's props
+    ScheduleStore.actionCreators 
 )(Schedule);

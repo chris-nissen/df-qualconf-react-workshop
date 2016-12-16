@@ -43,8 +43,7 @@ class GameRatings extends React.Component<GameRatingsProps, void> {
 	}
 }
 
-// Wire up the React component to the Redux store
 export default connect(
-	(state: ApplicationState) => state.gameRatings, // Selects which state properties are merged into the component's props
-	GameRatingsStore.actionCreators // Selects which action creators are merged into the component's props
+	(state: ApplicationState) => state.gameRatings, 
+	GameRatingsStore.actionCreators 
 )(GameRatings);
