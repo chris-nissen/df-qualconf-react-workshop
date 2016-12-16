@@ -23,19 +23,9 @@ interface FetchedGameAction {
     newRatings: Rating[];
 }
 
-interface UpVoteAction {
-    type: 'GameRatings::Upvote';
-    rating: Rating;
-}
-
-interface DownVoteAction {
-    type: 'GameRatings::Downvote';
-    rating: Rating;
-}
-
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = FetchedGameAction | UpVoteAction | DownVoteAction;
+type KnownAction = FetchedGameAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.
@@ -59,9 +49,6 @@ export const actionCreators = {
 
         dispatch({ type: 'GameRatings::fetched game', game: game, newRatings: newRatings } as FetchedGameAction);
     },
-
-    upVote: (rating: Rating) => ({ type: 'GameRatings::Upvote', rating: rating } as UpVoteAction),
-    downVote: (rating: Rating) => ({ type: 'GameRatings::Downvote', rating: rating } as DownVoteAction),
 };
 
 // ----------------
@@ -78,14 +65,6 @@ export const reducer: Reducer<GameRatingsState> = (state: GameRatingsState, acti
             game: action.game,
             ratings: state.ratings.concat(action.newRatings)
         };
-
-    case 'GameRatings::Upvote':
-        const newRatings = adjustRating(state.ratings, action.rating, 1);
-        return { ...state, ratings: newRatings };
-
-    case 'GameRatings::Downvote':
-        const newRatings2 = adjustRating(state.ratings, action.rating, -1);
-        return { ...state, ratings: newRatings2 };
     }
 
     // For unrecognized actions (or in cases where actions have no effect), must return the existing state

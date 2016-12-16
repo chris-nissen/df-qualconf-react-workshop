@@ -13,18 +13,7 @@ type ScheduleProps = ScheduleStore.ScheduleState & typeof ScheduleStore.actionCr
 class Schedule extends React.Component<ScheduleProps, void> {
     public render() {
         return <div className="schedule">
-                   <h1>Oilers Upcoming Schedule</h1>
-                   <Row>
-                       <Col xs={8}>
-                           {this.props.games
-                    .map(game => <GameBadge key={game.id} game={game} navigateToGame={this.navigateToGame} />)}
-                       </Col>
-                   </Row>
                </div>;
-    }
-
-    navigateToGame(game: Game) {
-        browserHistory.push(`/game/${game.id}`);
     }
 
     componentWillMount(): void {

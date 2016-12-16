@@ -15,9 +15,7 @@ type GameRatingsProps = GameRatingsStore.GameRatingsState
 class GameRatings extends React.Component<GameRatingsProps, void> {
 	public render() {
 		if (!this.props.game) return null;
-
-		const ratingsForGame = this.props.ratings.filter(r => r.gameId === this.props.game.id);
-
+        
 		return <div className="game-ratings">
 			       <div className="header">
 				       <TeamLogo team={this.props.game.awayTeam}/>
@@ -33,12 +31,8 @@ class GameRatings extends React.Component<GameRatingsProps, void> {
 			       </div>
 			       <Row>
 				       <Col xs={6}>
-                           <Roster team={this.props.game.awayTeam} ratings={ratingsForGame}
-                               upVote={this.props.upVote} downVote={this.props.downVote} />
 				       </Col>
 				       <Col xs={6}>
-                           <Roster team={this.props.game.homeTeam} ratings={ratingsForGame}
-                        upVote={this.props.upVote} downVote={this.props.downVote} />
 				       </Col>
 			       </Row>
 		       </div>;
