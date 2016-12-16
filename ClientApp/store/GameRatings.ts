@@ -23,9 +23,19 @@ interface FetchedGameAction {
     newRatings: Rating[];
 }
 
+interface UpVoteAction {
+    type: 'GameRatings::Upvote';
+    rating: Rating;
+}
+
+interface DownVoteAction {
+    type: 'GameRatings::Downvote';
+    rating: Rating;
+}
+
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
 // declared type strings (and not any other arbitrary string).
-type KnownAction = FetchedGameAction;
+type KnownAction = FetchedGameAction | UpVoteAction | DownVoteAction;
 
 // ----------------
 // ACTION CREATORS - These are functions exposed to UI components that will trigger a state transition.

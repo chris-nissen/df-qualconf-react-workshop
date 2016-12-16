@@ -13,6 +13,7 @@ type ScheduleProps = ScheduleStore.ScheduleState & typeof ScheduleStore.actionCr
 class Schedule extends React.Component<ScheduleProps, void> {
     public render() {
         return <div className="schedule">
+            
                </div>;
     }
 
